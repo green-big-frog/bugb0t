@@ -24,13 +24,13 @@ bot = Cinch::Bot.new do
     	]
     c.plugins.options = {
       Cinch::Plugins::LMGTFY => {
-        "username" => "*************",
-        "api_key" => "****************"
+        "username" => "greenbigfrog",
+        "api_key" => "R_177fd36e03dc4279bfbe266f93d09f8d"
       },
       
       Cinch::Plugins::Identify => {
       	:username => "dogeb0t",
-      	:password => "***********",
+      	:password => "ichliebebots",
       	:type     => :nickserv,
       }
     }
