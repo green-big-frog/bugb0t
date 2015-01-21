@@ -4,12 +4,14 @@ module Cinch
       include Cinch::Plugin
 
       set plugin_name: "PluginManagement"
+      set :prefix, /^!/
 
       match(/plugin load (\S+)(?: (\S+))?/, method: :load_plugin)
       match(/plugin unload (\S+)/, method: :unload_plugin)
       match(/plugin reload (\S+)(?: (\S+))?/, method: :reload_plugin)
       match(/plugin set (\S+) (\S+) (.+)$/, method: :set_option)
       match(/plugin reloadall/, method: :reload_all)
+      
 
       def load_plugin(m, plugin, mapping)
         mapping ||= plugin.gsub(/(.)([A-Z])/) { |_|
@@ -105,6 +107,7 @@ module Cinch
         end
         @bot.config.plugins.options[const][option.to_sym] = eval(value)
       end
+      
     end
   end
 end
