@@ -10,6 +10,8 @@ bot = Cinch::Bot.new do
     c.server = "irc.freenode.net"
     c.channels = ["#botwar", "#dogecoin-bots", "#dogecoindark"]
     c.realname = "I am a Bot using the cool cinch framework!!!"
+    c.delay_joins = :identified
+    c.messages_per_second = 0.2
     #plugins zum laden
     c.plugins.plugins = [
     	Cinch::Plugins::PluginManagement,
