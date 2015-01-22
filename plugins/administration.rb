@@ -59,15 +59,6 @@ module Cinch
         bot.nick = nick
         $conf.nick = nick
       end
-
-      def fix_nick
-        unless bot.nick == $conf.nick
-          bot.nick = $conf.nick
-        end
-      end
-      
-      
-      
     end
   end
 end
