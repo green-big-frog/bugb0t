@@ -19,7 +19,8 @@ bot = Cinch::Bot.new do
     	Cinch::Plugins::Hangman,
     	Cinch::Plugins::Help,
     	Cinch::Plugins::Quotes,
-    	Cinch::Plugins::Catfact
+    	Cinch::Plugins::Catfact,
+    	Cinch::Plugins::Administration
     	]
     c.plugins.options = {
       Cinch::Plugins::LMGTFY => {

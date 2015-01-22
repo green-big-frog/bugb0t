@@ -7,8 +7,6 @@ module Cinch
       
       set :prefix, /^!/
       
-      timer 300, :method => :fix_nick
-      
       match /join\s+(#[#\w\d_-]+)/, method: :join
       match /part\s+(#[#\w\d_-]+)/, method: :part
       match /say (\S+) (.*)/, method: :say
