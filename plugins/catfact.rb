@@ -17,7 +17,7 @@ module Cinch
 		  	parsed = JSON.parse(resp.body)		  	
 		  	
 		  	if parsed.include?('success')
-          			facts     = parsed['facts']          			
+          			facts     = parsed['facts'][0]
           			m.reply Format(:green,"#{facts}")
           		
         		else
