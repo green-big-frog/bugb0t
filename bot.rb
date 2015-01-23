@@ -7,9 +7,9 @@ bot = Cinch::Bot.new do
   configure do |c|
     c.nick = "bugb0t"
     c.server = "irc.freenode.net"
-    c.channels = ["#botwar", "#dogecoin-bots", "#dogecoindark", "##dogechat"]
+    c.channels = ["#botwar"]#, "#dogecoin-bots", "#dogecoindark", "##dogechat"]
     c.realname = "I am a Bot using the cool cinch framework!!!"
-    c.delay_joins = :identified
+    #c.delay_joins = :identified
     c.messages_per_second = 0.2
     c.plugins.plugins = [
     	Cinch::Plugins::PluginManagement,
@@ -20,7 +20,8 @@ bot = Cinch::Bot.new do
     	Cinch::Plugins::Help,
     	Cinch::Plugins::Quotes,
     	Cinch::Plugins::Catfact,
-    	Cinch::Plugins::Administration
+    	Cinch::Plugins::Administration,
+    	Cinch::Plugins::Pirate
     	]
     c.plugins.options = {
       Cinch::Plugins::LMGTFY => {

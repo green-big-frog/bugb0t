@@ -3,3 +3,12 @@ My IRC Bot
 
 
 This is my little IRC bot! I am trying to learn Ruby with the cool Cinch framework and my bot!
+
+
+Thanks to the Makers of:
+* https://github.com/compactcode/cinch_hangman
+* https://github.com/compactcode/cinch_joker
+* https://github.com/netfeed/cinch-lmgtfy
+* https://github.com/Gizmokid2005/swissircbot
+* https://github.com/Quintus/cinch-plugins
+* https://github.com/jurgemaister/turid
