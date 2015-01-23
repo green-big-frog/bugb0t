@@ -1,6 +1,7 @@
 require 'net/http'
 require 'json'
 
+module Cinch::Plugins
 class Pirate
   include Cinch::Plugin
 
@@ -18,4 +19,5 @@ class Pirate
 
   end
 
+end
 end
