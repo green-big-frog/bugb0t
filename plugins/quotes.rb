@@ -19,7 +19,7 @@ module Cinch
 		  	
 		  	if parsed.include?('quote')
 
-          			quote     = parsed['quote']
+          			quote     = parsed['quote'].gsub(/[\t\n\r]/, " ")
           			link     = parsed['link']
           			
           			m.reply Format(:bold,:teal,"#{quote}") + " (Permlink: #{link})"
