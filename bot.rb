@@ -7,7 +7,7 @@ bot = Cinch::Bot.new do
   configure do |c|
     c.nick = "bugb0t"
     c.server = "irc.freenode.net"
-    c.channels = ["#botwar"]#, "#dogecoin-bots", "#dogecoindark", "##dogechat"]
+    c.channels = ["#botwar", "#dogecoin-bots", "#dogecoindark", "##dogechat"]
     c.realname = "I am a Bot using the cool cinch framework!!!"
     #c.delay_joins = :identified
     c.messages_per_second = 0.2
