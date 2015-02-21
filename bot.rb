@@ -11,9 +11,9 @@ bot = Cinch::Bot.new do
 	bot.loggers.first.level  = :debug
   configure do |c|
     c.nick = "bugb0t"
-    c.server = "localhost"
-    c.channels = ["#botwar"]#, "#dogecoin-bots", "#dogecoindark", "##dogechat", "#bugb0t"]
-    c.realname = "I am a Bot using the cool cinch framework!!!"
+    c.server = "irc.freenode.net"
+    c.channels = ["#botwar", "#dogecoin-bots", "#dogecoindark", "##dogechat", "#bugb0t"]
+    c.realname = "I am a Bot using the cool cinch framework!!! Github Repo: https://github.com/green-big-frog/bugb0t"
     #c.delay_joins = :identified
     c.messages_per_second = 0.2
     c.plugins.plugins = [
