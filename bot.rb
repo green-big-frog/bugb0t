@@ -4,10 +4,15 @@ require 'cinch_hangman'
 Dir["./plugins/*.rb"].each {|file| require file }
 
 bot = Cinch::Bot.new do
+
+  bot = Cinch::Bot.new { }
+	bot.loggers << Cinch::Logger::FormattedLogger.new(File.open("/tmp/log.log", "a"))
+	bot.loggers.level = :debug
+	bot.loggers.first.level  = :debug
   configure do |c|
     c.nick = "bugb0t"
-    c.server = "irc.freenode.net"
-    c.channels = ["#botwar", "#dogecoin-bots", "#dogecoindark", "##dogechat", "#bugb0t"]
+    c.server = "localhost"
+    c.channels = ["#botwar"]#, "#dogecoin-bots", "#dogecoindark", "##dogechat", "#bugb0t"]
     c.realname = "I am a Bot using the cool cinch framework!!!"
     #c.delay_joins = :identified
     c.messages_per_second = 0.2
@@ -20,8 +25,9 @@ bot = Cinch::Bot.new do
     	Cinch::Plugins::Help,
     	Cinch::Plugins::Quotes,
     	Cinch::Plugins::Catfact,
-    	Cinch::Plugins::Administration,
-    	Cinch::Plugins::Pirate
+    	Cinch::Plugins::Administration#,
+    	#Cinch::Plugins::Pirate
+	#Remove these 3x # if you want to have !pirate enabled! The problem for me is/was that !pirate doen't check till now if there's a \* what allows to exploit a bot if there's a tipbot in the channel (Thanks to buzz from IRC for finding still if he used it!)
     	]
     c.plugins.options = {
       Cinch::Plugins::LMGTFY => {
