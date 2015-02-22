@@ -15,7 +15,6 @@ class Pirate
     end
 
     m.reply ("A pirate would say: " + @pirate["translation"]["pirate"])
-    #m.reply @pirate["translation"]["pirate"]
 
   end
 
