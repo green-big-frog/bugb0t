@@ -13,7 +13,6 @@ module Cinch
       match /op (\S+) (\S+)/, method: :op
       match /deop (\S+) (\S+)/, method: :deop
       match /kick (\S+) (\S+)(.*)?/, method: :kick
-      match /conf reload/, method: :conf_reload
       match /nick (\S+)/, method: :nick
 
       def join(m, channel)
@@ -45,11 +44,6 @@ module Cinch
         m
         reason ||= "Fuck off!"
         Channel("##{channel}").kick(user, reason)
-      end
-
-      def conf_reload (m)
-        m
-        $conf = Settings.new("config.json")
       end
 
       def nick(m, nick)

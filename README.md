@@ -8,7 +8,7 @@ bugb0t has a channel at freenode:
 	[irc.freenode.net #bugb0t](https://kiwiirc.com/client/irc.freenode.net/#bugb0t)
 
 TODO:
-[] Check for host of user for administration
+[ ] Check for host of user for administration
 [*] Fix Pirate vulnerability
 
 Thanks to the Makers of:
