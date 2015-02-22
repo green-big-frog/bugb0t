@@ -5,7 +5,7 @@ module Cinch
     class Balance
       include Cinch::Plugin
       
-      match("balance", method: :execute)
+      match("dogeb0tbalance", method: :execute)
       def execute(m)
     	m.reply "!balance"
       end
