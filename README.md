@@ -9,7 +9,7 @@ bugb0t has a channel at freenode:
 
 TODO:
 - [ ] Check for host of user for administration
-- [*] Fix Pirate vulnerability
+- [x] Fix Pirate vulnerability
 
 Thanks to the Makers of:
 * https://github.com/compactcode/cinch_hangman
