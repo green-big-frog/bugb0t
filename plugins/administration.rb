@@ -10,6 +10,7 @@ module Cinch
       match /join\s+(#[#\w\d_-]+)/, method: :join
       match /part\s+(#[#\w\d_-]+)/, method: :part
       match /say (\S+) (.*)/, method: :say
+      match /msg (\S+) (.+)/, method: :msg
       match /op (\S+) (\S+)/, method: :op
       match /deop (\S+) (\S+)/, method: :deop
       match /kick (\S+) (\S+)(.*)?/, method: :kick
@@ -28,6 +29,11 @@ module Cinch
       def say(m, channel, message)
         m
         Channel("##{channel}").privmsg(message)
+      end
+
+      def msg(m, receiver, message)
+        m
+        User(receiver).send(message)
       end
 
       def op(m, channel, user)
