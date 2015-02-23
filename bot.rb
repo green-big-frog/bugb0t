@@ -25,8 +25,7 @@ bot = Cinch::Bot.new do
     	Cinch::Plugins::Help,
     	Cinch::Plugins::Quotes,
     	Cinch::Plugins::Catfact,
-    	Cinch::Plugins::Administration,
-        Cinch::Plugins::Balance#,
+    	Cinch::Plugins::Administration#,
     	#Cinch::Plugins::Pirate
 	#Remove these 3x # if you want to have !pirate enabled! The problem for me is/was that !pirate doen't check till now if there's a \* what allows to exploit a bot if there's a tipbot in the channel (Thanks to buzz from IRC for finding still if he used it!)
     	]
