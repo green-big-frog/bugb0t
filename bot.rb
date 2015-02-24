@@ -5,15 +5,17 @@ Dir["./plugins/*.rb"].each {|file| require file }
 
 bot = Cinch::Bot.new do
 
-  bot = Cinch::Bot.new { }
-	bot.loggers << Cinch::Logger::FormattedLogger.new(File.open("/tmp/log.log", "a"))
-	bot.loggers.level = :debug
-	bot.loggers.first.level  = :debug
+  file = open("/tmp/bot.log", "a")
+  file.sync = true
+  loggers.push(Cinch::Logger::FormattedLogger.new(file))
+  loggers.first.level = :debug
+
   configure do |c|
     c.nick = "bugb0t"
     c.server = "irc.freenode.net"
     c.channels = ["#botwar", "#dogecoin-bots", "#dogecoindark", "##dogechat", "#bugb0t"]
     c.realname = "Github Repo: https://github.com/green-big-frog/bugb0t"
+    c.user = "ILOVEFROG"
     c.delay_joins = :identified
     c.messages_per_second = 0.2
     c.plugins.plugins = [
