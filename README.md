@@ -1,6 +1,7 @@
 # bugb0t
 My IRC Bot
 
+[![Build Status](https://travis-ci.org/green-big-frog/bugb0t.svg?branch=master)](https://travis-ci.org/green-big-frog/bugb0t)
 
 This is my little IRC bot! I am trying to learn Ruby with the cool Cinch framework and my bot!
 
@@ -9,7 +10,7 @@ bugb0t has a channel at freenode:
 
 TODO:
 - [ ] Check for host of user for administration
-- [x] Fix Pirate vulnerability
+- [ ] lots more
 
 Thanks to the Makers of:
 * https://github.com/compactcode/cinch_hangman
