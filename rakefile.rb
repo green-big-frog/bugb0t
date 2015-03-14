@@ -6,3 +6,4 @@ end
 
 notifications:
   irc: "chat.freenode.net#bugb0t"
+end
