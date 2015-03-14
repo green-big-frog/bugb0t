@@ -1,6 +1,6 @@
 task default: %w[test]
 
 task :test do
-  gem install cinch
+  require 'cinch'
   ruby "bot.rb"
 end
