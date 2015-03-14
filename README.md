@@ -1,5 +1,4 @@
 # bugb0t
-My IRC Bot
 
 [![Build Status](https://travis-ci.org/green-big-frog/bugb0t.svg?branch=master)](https://travis-ci.org/green-big-frog/bugb0t)
 
