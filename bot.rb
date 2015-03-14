@@ -1,3 +1,7 @@
+#bundle requierments
+require 'rubygems'
+require 'bundler/setup'
+
 require 'cinch'
 require 'cinch_hangman'
 
