@@ -1,11 +1,58 @@
-#bundle requierments
+#bundle requirments
 require 'rubygems'
 require 'bundler/setup'
 
+require 'optparse'
 require 'cinch'
 require 'cinch_hangman'
 
 Dir["./plugins/*.rb"].each {|file| require file }
+
+def startTestBot
+	testBot = Cinch::Bot.new do
+		configure do |c|
+			c.nick = "bugb0t"
+			c.server = "irc.freenode.net"
+			c.channels = [""]
+			c.plugins.plugins = [
+				Cinch::Plugins::PluginManagement,
+				Cinch::Plugins::LMGTFY,
+				Cinch::Plugins::Identify,
+				Cinch::Plugins::Joker,
+				Cinch::Plugins::Hangman,
+				Cinch::Plugins::Help,
+				Cinch::Plugins::Quotes,
+				Cinch::Plugins::Catfact,
+				Cinch::Plugins::Administration
+			]
+		end
+		on :connect do |m|
+			puts'aborting'
+			abort
+		end
+	end
+	puts'starting TestBot'
+	testBot.start
+	puts'started bot'
+end
+
+options = {}
+OptionParser.new do |opts|
+	opts.banner = "Usage: ruby bot.rb [options]"
+
+	opts.on("-t", "--test", "Run testmode") do |test|
+		puts'running test mode'
+		startTestBot
+	end
+end.parse!
+
+p options
+p ARGV
+
+
+
+
+
 
 bot = Cinch::Bot.new do
 
