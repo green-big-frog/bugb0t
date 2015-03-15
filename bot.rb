@@ -28,7 +28,7 @@ def startTestBot
 		end
 		on :connect do |m|
 			puts'aborting'
-			abort
+			exit
 		end
 	end
 	puts'starting TestBot'
