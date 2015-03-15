@@ -1,5 +1,5 @@
 task default: %w[test]
 
 task :test do
-	bundle exec rake
+	ruby "bot.rb --test"
 end
