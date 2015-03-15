@@ -8,6 +8,8 @@ require 'cinch_hangman'
 
 Dir["./plugins/*.rb"].each {|file| require file }
 
+SimpleCov.start
+
 def startTestBot
 	require 'coveralls'
 	Coveralls.wear!
