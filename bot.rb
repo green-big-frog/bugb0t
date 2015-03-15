@@ -9,6 +9,9 @@ require 'cinch_hangman'
 Dir["./plugins/*.rb"].each {|file| require file }
 
 def startTestBot
+	require 'coveralls'
+	Coveralls.wear!
+
 	testBot = Cinch::Bot.new do
 		configure do |c|
 			c.nick = "bugb0t"
