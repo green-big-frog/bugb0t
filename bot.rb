@@ -8,12 +8,8 @@ require 'cinch_hangman'
 
 Dir["./plugins/*.rb"].each {|file| require file }
 
-require 'coveralls'
-SimpleCov.start
 
 def startTestBot
-	Coveralls.wear!
-
 	testBot = Cinch::Bot.new do
 		configure do |c|
 			c.nick = "bugb0t"
