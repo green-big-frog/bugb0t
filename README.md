@@ -1,6 +1,8 @@
 # bugb0t
 
 [![Build Status](https://travis-ci.org/green-big-frog/bugb0t.svg?branch=master)](https://travis-ci.org/green-big-frog/bugb0t)
+[![Code Climate](https://codeclimate.com/github/green-big-frog/bugb0t/badges/gpa.svg)](https://codeclimate.com/github/green-big-frog/bugb0t)
+[![Test Coverage](https://codeclimate.com/github/green-big-frog/bugb0t/badges/coverage.svg)](https://codeclimate.com/github/green-big-frog/bugb0t)
 
 This is my little IRC bot! I am trying to learn Ruby with the cool Cinch framework and my bot!
 
