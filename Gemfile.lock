@@ -1,0 +1,21 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    cinch (2.2.4)
+    cinch_hangman (0.0.7)
+      cinch
+    curb (0.8.6)
+    json (1.8.2)
+    openssl (1.0.0.beta)
+    rake (10.4.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cinch
+  cinch_hangman
+  curb
+  json
+  openssl
+  rake
