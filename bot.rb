@@ -5,8 +5,8 @@ require 'bundler/setup'
 require 'optparse'
 require 'cinch'
 require 'cinch_hangman'
-require 'cinch-identify'
-require 'cinch-lmgtfy'
+require "cinch/plugins/identify"
+require 'cinch/plugins/lmgtfy'
 
 Dir["./plugins/*.rb"].each {|file| require file }
 

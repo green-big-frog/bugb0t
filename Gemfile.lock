@@ -2,6 +2,12 @@ GEM
   remote: https://rubygems.org/
   specs:
     cinch (2.2.4)
+    cinch-identify (1.6.0)
+      cinch (~> 2.0)
+    cinch-lmgtfy (0.0.2)
+      cinch
+      curb
+      json
     cinch_hangman (0.0.7)
       cinch
     curb (0.8.6)
@@ -14,6 +20,8 @@ PLATFORMS
 
 DEPENDENCIES
   cinch
+  cinch-identify
+  cinch-lmgtfy
   cinch_hangman
   curb
   json
