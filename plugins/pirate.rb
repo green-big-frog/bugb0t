@@ -14,7 +14,7 @@ class Pirate
       @pirate = JSON.parse(resp.body)
     end
 
-    m.reply ("A pirate would say: " + @pirate["translation"]["pirate"])
+    m.reply ("A pirate would say: " + @pirate["translation"]["pirate"]).gsub(/[\t\n\r]/, " ")
 
   end
 
