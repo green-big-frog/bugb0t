@@ -2,6 +2,10 @@
 require 'rubygems'
 require 'bundler/setup'
 
+#configatron
+require 'configatron'
+require './config.rb'
+
 require 'optparse'
 require 'cinch'
 require 'cinch_hangman'
@@ -66,11 +70,11 @@ bot = Cinch::Bot.new do
   loggers.first.level = :debug
 
   configure do |c|
-    c.nick = "bugb0t"
-    c.server = "irc.freenode.net"
-    c.channels = ["#botwar", "#dogecoin-bots", "#dogecoindark", "##dogechat", "#bugb0t"]
-    c.realname = "Github: https://github.com/green-big-frog/bugb0t"
-    c.user = "ILOVEFROG"
+    c.nick = configatron.nick
+    c.server = configatron.server
+    c.channels = configatron.channels
+    c.realname = configatron.realname
+    c.user = configatron.user
     c.delay_joins = :identified
     c.messages_per_second = 0.2
     c.plugins.plugins = [
