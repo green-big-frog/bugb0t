@@ -18,9 +18,8 @@ Dir["./plugins/*.rb"].each {|file| require file }
 def startTestBot
 	testBot = Cinch::Bot.new do
 		configure do |c|
-			c.nick = "bugb0t"
-			c.server = "irc.freenode.net"
-			c.channels = [""]
+			c.nick = configatron.nick
+			c.server = configatron.server
 			c.plugins.plugins = [
 				Cinch::Plugins::PluginManagement,
 				Cinch::Plugins::LMGTFY,
@@ -32,7 +31,7 @@ def startTestBot
 				Cinch::Plugins::Catfact,
 				Cinch::Plugins::Administration,
 				Cinch::Plugins::Pirate
-			]
+				]
 		end
 		on :connect do |m|
 			puts'aborting'
@@ -67,7 +66,7 @@ bot = Cinch::Bot.new do
   file = open("/tmp/bot.log", "a")
   file.sync = true
   loggers.push(Cinch::Logger::FormattedLogger.new(file))
-  loggers.first.level = :debug
+  loggers.first.level = :log
 
   configure do |c|
     c.nick = configatron.nick
@@ -75,8 +74,8 @@ bot = Cinch::Bot.new do
     c.channels = configatron.channels
     c.realname = configatron.realname
     c.user = configatron.user
-    c.delay_joins = :identified
-    c.messages_per_second = 0.2
+    c.delay_joins = configatron.delay_joins
+    c.messages_per_second = configatron.messages_per_second
     c.plugins.plugins = [
     	Cinch::Plugins::PluginManagement,
     	Cinch::Plugins::LMGTFY,
@@ -91,14 +90,14 @@ bot = Cinch::Bot.new do
     	]
     c.plugins.options = {
       Cinch::Plugins::LMGTFY => {
-        "username" => "",
-        "api_key" => ""
+        "username" => configatron.options.lmgtfy.username,
+        "api_key" => configatron.options.lmgtfy.api_key
       },
       
       Cinch::Plugins::Identify => {
-      	:username => "bugb0t",
-      	:password => "",
-      	:type     => :nickserv,
+      	:username => configatron.options.identify.username,
+      	:password => configatron.options.identify.password,
+      	:type     => configatron.options.identify.type
       }
     }
   end
