@@ -11,6 +11,10 @@ module Cinch
       match(/plugin reload (\S+)(?: (\S+))?/, method: :reload_plugin)
       match(/plugin set (\S+) (\S+) (.+)$/, method: :set_option)
       match(/plugin reloadall/, method: :reload_all)
+
+	def is_admin?(user)
+		true if user.nick == configatron.admin.nick
+	end
       
 
       def load_plugin(m, plugin, mapping)
@@ -20,12 +24,12 @@ module Cinch
 
         file_name = "plugins/#{mapping}.rb"
         unless File.exist?(file_name)
-          m.reply "Could not load #{plugin} because #{file_name} does not exist."
+          m.reply "Could not load #{plugin} because #{file_name} does not exist." if is_admin?(m.user)
           return
         end
 
         begin
-          load(file_name)
+          load(file_name) if is_admin?(m.user)
         rescue
           m.reply "Could not load #{plugin}."
           raise
@@ -34,24 +38,24 @@ module Cinch
         begin
           const = Cinch::Plugins.const_get(plugin)
         rescue NameError
-          m.reply "Could not load #{plugin} because no matching class was found."
+          m.reply "Could not load #{plugin} because no matching class was found." if is_admin?(m.user)
           return
         end
 
         @bot.plugins.register_plugin(const)
-        m.reply "Successfully loaded #{plugin}"
+        m.reply "Successfully loaded #{plugin}" if is_admin?(m.user)
       end
 
       def unload_plugin(m, plugin)
         begin
           plugin_class = Cinch::Plugins.const_get(plugin)
         rescue NameError
-          m.reply "Could not unload #{plugin} because no matching class was found."
+          m.reply "Could not unload #{plugin} because no matching class was found." if is_admin?(m.user)
           return
         end
 
         @bot.plugins.select {|p| p.class == plugin_class}.each do |p|
-          @bot.plugins.unregister_plugin(p)
+          @bot.plugins.unregister_plugin(p) if is_admin?(m.user)
         end
 
         ## FIXME not doing this at the moment because it'll break
@@ -75,12 +79,12 @@ module Cinch
         plugin_class.suffix = nil
         plugin_class.required_options.clear
 
-        m.reply "Successfully unloaded #{plugin}"
+        m.reply "Successfully unloaded #{plugin}" if is_admin?(m.user)
       end
 
       def reload_plugin(m, plugin, mapping)
-        unload_plugin(m, plugin)
-        load_plugin(m, plugin, mapping)
+        unload_plugin(m, plugin) if is_admin?(m.user)
+        load_plugin(m, plugin, mapping) if is_admin?(m.user)
       end
 
       def reload_all(m)
@@ -93,16 +97,16 @@ module Cinch
             next
           end
 
-          unload_plugin(m, plugin)
-          load_plugin(m, plugin, nil)
+          unload_plugin(m, plugin) if is_admin?(m.user)
+          load_plugin(m, plugin, nil) if is_admin?(m.user)
         };
       end
 
       def set_option(m, plugin, option, value)
         begin
-          const = Cinch::Plugins.const_get(plugin)
+          const = Cinch::Plugins.const_get(plugin) if is_admin?(m.user)
         rescue NameError
-          m.reply "Could not set plugin option for #{plugin} because no matching class was found."
+          m.reply "Could not set plugin option for #{plugin} because no matching class was found." if is_admin?(m.user)
           return
         end
         @bot.config.plugins.options[const][option.to_sym] = eval(value)

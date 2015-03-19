@@ -16,45 +16,41 @@ module Cinch
       match /kick (\S+) (\S+)(.*)?/, method: :kick
       match /nick (\S+)/, method: :nick
 
+	def is_admin?(user)
+		true if user.nick == configatron.admin.nick
+	end
+
       def join(m, channel)
-        m
-        bot.join channel
+        bot.join channel if is_admin?(m.user)
       end
 
       def part(m, channel)
-        m
-        bot.part channel
+        bot.part channel if is_admin?(m.user)
       end
 
       def say(m, channel, message)
-        m
-        Channel("##{channel}").privmsg(message)
+        Channel("##{channel}").privmsg(message) if is_admin?(m.user)
       end
 
       def msg(m, receiver, message)
-        m
-        User(receiver).send(message)
+        User(receiver).send(message) if is_admin?(m.user)
       end
 
       def op(m, channel, user)
-        m
-        Channel("##{channel}").op(user)
+        Channel("##{channel}").op(user) if is_admin?(m.user)
       end
 
       def deop(m, channel, user)
-        m
-        Channel("##{channel}").deop(user)
+        Channel("##{channel}").deop(user) if is_admin?(m.user)
       end
 
       def kick(m, channel, user, reason)
-        m
         reason ||= "Fuck off!"
-        Channel("##{channel}").kick(user, reason)
+        Channel("##{channel}").kick(user, reason) if is_admin?(m.user)
       end
 
       def nick(m, nick)
-        m
-        bot.nick = nick
+        bot.nick = nick if is_admin?(m.user)
         $conf.nick = nick
       end
     end
