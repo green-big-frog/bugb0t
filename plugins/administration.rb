@@ -29,7 +29,7 @@ module Cinch
       end
 
       def say(m, channel, message)
-        Channel("##{channel}").privmsg(message) if is_admin?(m.user)
+        Channel("##{channel}").send(message) if is_admin?(m.user)
       end
 
       def msg(m, receiver, message)
