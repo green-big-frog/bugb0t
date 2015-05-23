@@ -1,5 +1,7 @@
 # bugb0t
 
+[![Join the chat at https://gitter.im/green-big-frog/bugb0t](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/green-big-frog/bugb0t?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/green-big-frog/bugb0t.svg?branch=master)](https://travis-ci.org/green-big-frog/bugb0t)
 [![Code Climate](https://codeclimate.com/github/green-big-frog/bugb0t/badges/gpa.svg)](https://codeclimate.com/github/green-big-frog/bugb0t)
 
