@@ -8,9 +8,7 @@
 
 This is my little IRC bot! I am trying to learn Ruby with the cool Cinch framework and my bot!
 
-bugb0t has a channel at freenode:
-	[irc.freenode.net #bugb0t](https://kiwiirc.com/client/irc.freenode.net/#bugb0t)
-	
+
 ###Getting Started
 To get started on Ubuntu (and similar OS) you need to do following:  
 1. Install ruby (at least 1.9.1) and rubygems (and git if you haven't done that already) `sudo apt-get install ruby rubygems git`  
