@@ -33,7 +33,7 @@ def start_test_bot
         Cinch::Plugins::Pirate
       ]
     end
-    on :connect do |m|
+    on :connect do
       puts 'aborting'
       exit
     end
@@ -47,7 +47,7 @@ options = {}
 OptionParser.new do |opts|
   opts.banner = 'Usage: ruby bot.rb [options]'
 
-  opts.on('-t', '--test', 'Run testmode') do |test|
+  opts.on('-t', '--test', 'Run testmode') do
     puts 'running test mode'
     start_test_bot
   end
@@ -58,8 +58,7 @@ p ARGV
 
 
 bot = Cinch::Bot.new do
-
-  file = open("/tmp/bot.log", "a")
+  file = open('/tmp/bot.log', 'a')
   file.sync = true
   loggers.push(Cinch::Logger::FormattedLogger.new(file))
   loggers.first.level = :log
@@ -86,8 +85,8 @@ bot = Cinch::Bot.new do
     ]
     c.plugins.options = {
       Cinch::Plugins::LMGTFY => {
-        "username" => configatron.options.lmgtfy.username,
-        "api_key" => configatron.options.lmgtfy.api_key
+        'username' => configatron.options.lmgtfy.username,
+        'api_key' => configatron.options.lmgtfy.api_key
       },
 
       Cinch::Plugins::Identify => {
