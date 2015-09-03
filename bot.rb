@@ -13,36 +13,43 @@ require 'cinch/plugins/identify'
 require 'cinch/plugins/lmgtfy'
 
 # Dir["./plugins/*.rb"].each {|file| require file }
-Dir["./plugins/*.rb"].each {|file| require file }
+Dir['./plugins/*.rb'].each { |file| require file }
 
+# The Test Bot
 def start_test_bot
   test_bot = Cinch::Bot.new do
-    configure do |c|
-      c.nick = configatron.nick
-      c.server = configatron.server
-      c.plugins.plugins = [
-        Cinch::Plugins::PluginManagement,
-        Cinch::Plugins::LMGTFY,
-        Cinch::Plugins::Identify,
-        Cinch::Plugins::Joker,
-        Cinch::Plugins::Hangman,
-        Cinch::Plugins::Help,
-        Cinch::Plugins::Quotes,
-        Cinch::Plugins::Catfact,
-        Cinch::Plugins::Administration,
-        Cinch::Plugins::Pirate
-      ]
-    end
-    on :connect do
-      puts 'aborting'
-      exit
-    end
+    configure_test_bot
+  end
+  on :connect do
+    puts 'aborting'
+    exit
   end
   puts 'starting TestBot'
   test_bot.start
   puts 'started bot'
 end
 
+# Configure the test Bot
+def configure_test_bot
+  configure do |c|
+    c.nick = configatron.nick
+    c.server = configatron.server
+    c.plugins.plugins = [
+      Cinch::Plugins::PluginManagement,
+      Cinch::Plugins::LMGTFY,
+      Cinch::Plugins::Identify,
+      Cinch::Plugins::Joker,
+      Cinch::Plugins::Hangman,
+      Cinch::Plugins::Help,
+      Cinch::Plugins::Quotes,
+      Cinch::Plugins::Catfact,
+      Cinch::Plugins::Administration,
+      Cinch::Plugins::Pirate
+    ]
+  end
+end
+
+# Enable the running of bot.rb with options, f.e. -t for travis testing
 options = {}
 OptionParser.new do |opts|
   opts.banner = 'Usage: ruby bot.rb [options]'
@@ -56,7 +63,7 @@ end.parse!
 p options
 p ARGV
 
-
+# The real Bot
 bot = Cinch::Bot.new do
   file = open('/tmp/bot.log', 'a')
   file.sync = true
