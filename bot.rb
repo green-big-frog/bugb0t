@@ -57,10 +57,6 @@ p options
 p ARGV
 
 
-
-
-
-
 bot = Cinch::Bot.new do
 
   file = open("/tmp/bot.log", "a")
