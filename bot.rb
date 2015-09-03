@@ -90,9 +90,9 @@ bot = Cinch::Bot.new do
       },
 
       Cinch::Plugins::Identify => {
-        :username => configatron.options.identify.username,
-        :password => configatron.options.identify.password,
-        :type     => configatron.options.identify.type
+        username: configatron.options.identify.username,
+        password: configatron.options.identify.password,
+        type: configatron.options.identify.type
       }
     }
   end
