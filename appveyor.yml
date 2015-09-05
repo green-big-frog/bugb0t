@@ -1,7 +1,22 @@
-before_build: cp example.config.rb config.rb
+version: '{build}'
+
+skip_tags: true
+
+environment:
+  matrix:    
+    - ruby_version: "19"
+    - ruby_version: "21"
+    - ruby_version: "21-x64"
+    - ruby_version: "22"
+    - ruby_version: "22-x64"
+
 install:
-  - bundle
-build: off
-shallow_clone: true
+  - SET PATH=C:\Ruby%ruby_version%\bin;%PATH%
+  - gem install bundler --no-document -v 1.10.5
+  - bundle install --retry=3
+
 test_script:
-  - rake spec:shoes
+  - cp example.config.rb config.rb
+  - bundle exec rake
+
+build: off
