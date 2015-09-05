@@ -7,7 +7,4 @@ rvm:
   - 1.9.3
   - 1.9.2
 
-notifications:
-  irc: "chat.freenode.net#bugb0t"
-
 before_install: cp example.config.rb config.rb
