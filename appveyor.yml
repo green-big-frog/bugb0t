@@ -3,7 +3,7 @@ version: '{build}'
 skip_tags: true
 
 environment:
-  matrix:    
+  matrix:
     - ruby_version: "19"
     - ruby_version: "21"
     - ruby_version: "21-x64"
@@ -12,7 +12,7 @@ environment:
 
 install:
   - SET PATH=C:\Ruby%ruby_version%\bin;%PATH%
-  - gem install bundler --no-document -v 1.10.5
+  - gem install bundler
   - bundle install --retry=3
 
 test_script:
