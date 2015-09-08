@@ -8,9 +8,6 @@ configatron.server = 'irc.freenode.net'
 # The channels to join
 configatron.channels = [
   '#botwar',
-  '#dogecoin-bots',
-  '#dogecoindark',
-  '##dogechat',
   '#bugb0t']
 # The realname of the bot
 configatron.realname = 'Github: https://github.com/green-big-frog/bugb0t'
@@ -22,7 +19,7 @@ configatron.delay_joins = :identified
 configatron.messages_per_second = 0.2
 
 # The nick of the admin
-configatron.admin.nick = 'green-big-frog'
+configatron.admin.nick = 'greenbigfrog'
 
 # Options for lmgtfy
 configatron.options.lmgtfy.username = ''
