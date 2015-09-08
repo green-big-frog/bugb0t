@@ -4,9 +4,9 @@ module Cinch
   module Plugins
     class Administration
       include Cinch::Plugin
-      
+
       set :prefix, /^!/
-      
+
       match /join\s+(#[#\w\d_-]+)/, method: :join
       match /part\s+(#[#\w\d_-]+)/, method: :part
       match /say (\S+) (.*)/, method: :say
@@ -16,9 +16,9 @@ module Cinch
       match /kick (\S+) (\S+)(.*)?/, method: :kick
       match /nick (\S+)/, method: :nick
 
-	def is_admin?(user)
-		true if user.nick == configatron.admin.nick
-	end
+      def is_admin?(user)
+        true if user.nick == configatron.admin.nick
+      end
 
       def join(m, channel)
         bot.join channel if is_admin?(m.user)
@@ -56,4 +56,3 @@ module Cinch
     end
   end
 end
-

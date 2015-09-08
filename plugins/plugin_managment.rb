@@ -12,10 +12,10 @@ module Cinch
       match(/plugin set (\S+) (\S+) (.+)$/, method: :set_option)
       match(/plugin reloadall/, method: :reload_all)
 
-	def is_admin?(user)
-		true if user.nick == configatron.admin.nick
-	end
-      
+      def is_admin?(user)
+        true if user.nick == configatron.admin.nick
+      end
+
 
       def load_plugin(m, plugin, mapping)
         mapping ||= plugin.gsub(/(.)([A-Z])/) { |_|
@@ -99,19 +99,19 @@ module Cinch
 
           unload_plugin(m, plugin) if is_admin?(m.user)
           load_plugin(m, plugin, nil) if is_admin?(m.user)
-        };
-      end
-
-      def set_option(m, plugin, option, value)
-        begin
-          const = Cinch::Plugins.const_get(plugin) if is_admin?(m.user)
-        rescue NameError
-          m.reply "Could not set plugin option for #{plugin} because no matching class was found." if is_admin?(m.user)
-          return
+          };
         end
-        @bot.config.plugins.options[const][option.to_sym] = eval(value)
+
+        def set_option(m, plugin, option, value)
+          begin
+            const = Cinch::Plugins.const_get(plugin) if is_admin?(m.user)
+          rescue NameError
+            m.reply "Could not set plugin option for #{plugin} because no matching class was found." if is_admin?(m.user)
+            return
+          end
+          @bot.config.plugins.options[const][option.to_sym] = eval(value)
+        end
+
       end
-      
     end
   end
-end

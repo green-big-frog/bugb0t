@@ -3,42 +3,38 @@ require 'json'
 require 'net/http'
 
 module Cinch
-	module Plugins
-		class Quotes
-		  include Cinch::Plugin
+  module Plugins
+    class Quotes
+      include Cinch::Plugin
 
-		  match "quote"
+      match "quote"
 
-		  def execute(m)
-		        uri = URI.parse("http://www.iheartquotes.com/api/v1/random.json")
-      			Net::HTTP.start(uri.host, uri.port) do |http|
+      def execute(m)
+        uri = URI.parse("http://www.iheartquotes.com/api/v1/random.json")
+        Net::HTTP.start(uri.host, uri.port) do |http|
+          resp = Net::HTTP.get_response(uri)
+          parsed = JSON.parse(resp.body)
 
-        		resp        = Net::HTTP.get_response(uri)
-		  	parsed = JSON.parse(resp.body)
-		  	
-		  	
-		  	if parsed.include?('quote')
+          if parsed.include?('quote')
 
-          			quote     = parsed['quote'].gsub(/[\t\n\r]/, " ")
-          			link     = parsed['link']
-          			
-          			m.reply Format(:bold,:teal,"#{quote}") + " (Permlink: #{link})"
+            quote = parsed['quote'].gsub(/[\t\n\r]/, " ")
+            link = parsed['link']
 
-        		elsif parsed.include?('response')
+            m.reply Format(:bold,:teal,"#{quote}") + " (Permlink: #{link})"
 
-          			error       = parsed['response']['error']
+          elsif parsed.include?('response')
 
-          			m.reply "Sorry, the API returned an error!!!"
+            error       = parsed['response']['error']
 
-        		else
+            m.reply "Sorry, the API returned an error!!!"
 
-          			m.reply "Well...this was unexpected. No quote for you, sorry."
+          else
 
-        		end
-		  	end
-		  end
-	end
+            m.reply "Well...this was unexpected. No quote for you, sorry."
+
+          end
+        end
+      end
+    end
+  end
 end
-end
-
-

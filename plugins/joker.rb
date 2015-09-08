@@ -14,6 +14,5 @@ module Cinch::Plugins
     def jokes
       @jokes ||= File.open(File.join(File.dirname(__FILE__), 'jokes.txt'), 'r').readlines
     end
-
   end
 end
