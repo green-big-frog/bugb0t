@@ -9,7 +9,7 @@
 This is my little IRC bot! I am trying to learn Ruby with the cool Cinch framework and my bot!
 
 
-###Getting Started
+### Getting Started
 To get started on Ubuntu (and similar OS) you need to do following:  
 1. Install ruby (at least 1.9.1) and rubygems (and git if you haven't done that already) `sudo apt-get install ruby rubygems git`  
 2. check you have at least ruby 1.9.1 `ruby -v`  
